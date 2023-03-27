@@ -1,0 +1,37 @@
+@use "../utilities/variables" as vars;
+
+@mixin btn($bg-color: #e2e2e2) {
+	margin: vars.$base-margin;
+	padding: vars.$base-padding vars.$base-padding * 2;
+	border: 0;
+	border-radius: vars.$base-border-radius;
+
+	display: inline-block;
+	background: $bg-color !important;
+
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn {
+	@include btn;
+}
+
+@each $key, $value in vars.$colors {
+	.btn-#{$key} {
+		@include btn($value);
+
+		&:hover {
+			background: darken($value, 10%) !important;
+		}
+	}
+
+	.btn-outlined-#{$key} {
+		@include btn(#fff);
+		border: vars.$base-border-thickness solid $value;
+
+		&:hover {
+			background: $value !important;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+// * Variables && Functions
+@use "./utilities/variables" as vars;
+
+// * Reset Code && Layout
+@forward "./base/reset";
+
+// * Colors && Typography
+@forward "./utilities/typography";
+@forward "./utilities/colors";
+
+// * Components
+@forward "./components/cards";
+@forward "./components/buttons";
+
+// * Margin && Padding && Opacity
+
+h2,
+h3,
+span {
+	margin: vars.$base-margin;
+	padding: 0 vars.$base-padding;
+}
+
+span {
+	display: inline-block;
+}

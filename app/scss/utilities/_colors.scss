@@ -1,0 +1,43 @@
+@use "./variables" as vars;
+@use "sass:math" as math;
+
+@each $key, $value in vars.$colors {
+	.text-#{$key} {
+		color: $value;
+	}
+	.bg-#{$key} {
+		background: $value !important;
+	}
+
+	.text-hover-#{$key} {
+		&:hover {
+			color: $value;
+		}
+	}
+	.bg-hover-#{$key} {
+		&:hover {
+			background: $value !important;
+		}
+	}
+
+	@if ($value != black and $value != white) {
+		@for $i from 1 through 9 {
+			.text-#{$key}-light-#{$i} {
+				color: lighten($value, (($i * 3%)));
+			}
+
+			.bg-#{$key}-light-#{$i} {
+				background: lighten($value, (($i * 3%))) !important;
+			}
+		}
+		@for $i from 1 through 9 {
+			.text-#{$key}-dark-#{$i} {
+				color: darken($value, (($i * 3%)));
+			}
+
+			.bg-#{$key}-dark-#{$i} {
+				background: darken($value, (($i * 3%))) !important;
+			}
+		}
+	}
+}
